@@ -1,0 +1,174 @@
+ScreenManager:
+	HomeScreen:
+	ProfileScreen:
+	IPToolScreen:
+	IMTSKScreen:
+	QRCodeScreen:
+
+<HomeScreen>:
+	name: "home"
+	canvas.before:
+		Color:
+			rgba: rgba("#ffd93a")
+	MDBoxLayout:
+		orientation: "vertical"
+		MDToolbar:
+			id: caller
+			title: "Home"
+			elevation: 10
+		Widget:
+	MDFillRoundFlatIconButton:
+        id: button
+        text: "START"
+        icon: "arrow-right-bold"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        on_release: app.stat()
+    	md_bg_color: app.theme_cls.primary_dark
+        
+        font_style: "JetBrainsMono"
+
+<QRCodeScreen>:
+	name: "code"
+	MDBoxLayout:
+		orientation: "vertical"
+		MDToolbar:
+			title: "QR Creator"
+			elevation: 10
+			right_action_items: [["dots-vertical", lambda x: app.dialog.open()]]
+		Widget:
+
+	MDTextField:
+		id: qr_content
+    	size_hint_x: .8
+    	hint_text: "Text or Url"
+    	max_height: "200dp"
+    	mode: "fill"
+    	fill_color: 0, 0, 0, .4
+    	radius: [20,7,20,7]
+    	multiline: True
+    	pos_hint: {"center_x": .5, "center_y": .5}
+	
+	MDFillRoundFlatIconButton:
+		id: d_but
+		text: "Create QR"
+    	icon: "qrcode"
+    	theme_text_color: "Custom"
+    	pos_hint: {"center_x":0.5, "center_y":0.1}
+    	elevation_normal: 12
+    	md_bg_color: app.theme_cls.primary_dark
+    	size_hint: None, None
+    	size: 75, 50
+    	on_release:
+    		app.create_qr()
+
+
+<ProfileScreen>:
+	name: "profile"
+	canvas:
+        Color:
+            rgb: 1, 1, 1
+        Ellipse:
+            pos: 50,320
+            size: 200 , 200
+            source: 'pp.jpg'
+            angle_start: 0
+            angle_end: 360
+    MDBoxLayout:
+		orientation: "vertical"
+		MDToolbar:
+			title: "About Dev"
+			elevation: 10
+			right_action_items: [["dots-vertical", lambda x: app.dialog.open()]]
+		Widget:
+
+    MDFlatButton:
+    	text: "Name: Tushar Vinakoti"
+    	pos_hint: {"center_x": .5, "center_y": .4}
+    	font_color: "black"
+    	size: 50 , 50
+
+
+    MDFlatButton:
+    	text: "Profession: Student Developer"
+    	pos_hint: {"center_x": .5, "center_y": .3}
+    	font_color: "black"
+    	size: 50 , 50
+
+    MDFlatButton:
+    	text: "Phone: +919959686272, +919959686272"
+    	pos_hint: {"center_x": .5, "center_y": .2}
+    	font_color: "black"
+    	size: 50 , 50
+	
+	
+
+<IMTSKScreen>:
+    name: "imtsk"
+    MDBoxLayout:
+		orientation: "vertical"
+		MDToolbar:
+			title: "IMTSK"
+			elevation: 10
+			right_action_items: [["dots-vertical", lambda x: app.dialog.open()]]
+		Widget:
+	MDFlatButton:
+		text: "IMTSK Stands For\nImage To Sketch Converter"
+		pos_hint: {"center_x":0.5, "center_y":0.7}
+
+	MDFillRoundFlatIconButton:
+		text: "Convert Image"
+    	icon: "file-upload"
+    	theme_text_color: "Custom"
+    	pos_hint: {"center_x":0.5, "center_y":0.5}
+    	elevation_normal: 12
+    	md_bg_color: app.theme_cls.primary_dark
+    	size_hint: None, None
+    	size: 75, 50
+    	on_release:
+    		app.file_manager_open()
+<IPToolScreen>:
+    name: "iptool"
+    MDBoxLayout:
+		orientation: "vertical"
+		MDToolbar:
+			title: "IPv4"
+			elevation: 10
+			right_action_items: [["dots-vertical", lambda x: app.dialog.open()]]
+		Widget:
+    MDTextField:
+    	id: ip_URL
+    	size_hint_x: .8
+    	hint_text: "URL"
+    	max_height: "200dp"
+    	mode: "fill"
+    	fill_color: 0, 0, 0, .4
+    	radius: [20,7,20,7]
+    	multiline: True
+    	pos_hint: {"center_x": .5, "center_y": .6}
+    MDFlatButton:
+    	id: ip_url
+        pos_hint: {"center_x": .5, "center_y": .4}
+
+    MDFlatButton:
+    	id: ip_add
+        pos_hint: {"center_x": .5, "center_y": .3}
+
+    MDFillRoundFlatIconButton:
+		text: "Find IPv4"
+    	icon: "ip-network-outline"
+    	theme_text_color: "Custom"
+    	pos_hint: {"center_x":0.5, "center_y":0.1}
+    	elevation_normal: 12
+    	md_bg_color: app.theme_cls.primary_dark
+    	size_hint: None, None
+    	size: 75, 50
+    	on_release:
+    		app.find_ip()
+
+
+
+
+
+
+
+	
